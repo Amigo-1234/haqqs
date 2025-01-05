@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Prayer Countdown</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: "Raleway", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .prayer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .prayer-row div {
+      flex: 1;
+      text-align: center;
+    }
+
+    .prayer-row i {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .countdown {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #444;
+    }
+
+    .back-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #333;
+    }
+
+    @media screen and (max-width: 768px) {
+      .prayer-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Live Prayer Countdown</h2>
+    <p>Time remaining for the next prayer:</p>
+    <div id="countdown" class="countdown">Loading...</div>
+    <div>
+      <div class="prayer-row">
+        <div>
+          <i class="fa fa-moon-o"></i>
+          <p>Fajr: <span id="fajr-time"></span></p>
+        </div>
+        <div>
+          <i class="fa fa-sun-o"></i>
+          <p>Dhuhr: <span id="dhuhr-time"></span></p>
+        </div>
+        <div>
+          <i class="fa fa-cloud"></i>
+          <p>Asr: <span id="asr-time"></span></p>
+        </div>
+        <div>
+          <i class="fa fa-star"></i>
+          <p>Maghrib: <span id="maghrib-time"></span></p>
+        </div>
+        <div>
+          <i class="fa fa-moon-o"></i>
+          <p>Isha: <span id="isha-time"></span></p>
+        </div>
+      </div>
+    </div>
+    <a href="prayer.html" class="back-button">Back to Live Prayer Times</a>
+  </div>
+
+  <script>
+    // Prayer times (adjust as needed)
+    const prayerTimes = {
+      fajr: "05:11 AM",
+      dhuhr: "01:50 PM",
+      asr: "03:45 PM",
+      maghrib: "06:45 PM",
+      isha: "07:30 PM",
+    };
+
+    // Populate prayer times
+    document.getElementById('fajr-time').textContent = prayerTimes.fajr;
+    document.getElementById('dhuhr-time').textContent = prayerTimes.dhuhr;
+    document.getElementById('asr-time').textContent = prayerTimes.asr;
+    document.getElementById('maghrib-time').textContent = prayerTimes.maghrib;
+    document.getElementById('isha-time').textContent = prayerTimes.isha;
+
+    // Request notification permission
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
+
+    // Send notification
+    const sendPrayerNotification = (prayerName) => {
+      if (Notification.permission === "granted") {
+        const notification = new Notification(`${prayerName} Time!`, {
+          body: `It's time for ${prayerName}.`,
+          icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Islamic_Mosque_Icon.png/600px-Islamic_Mosque_Icon.png"
+        });
+        setTimeout(notification.close.bind(notification), 5000); // Close notification after 5 seconds
+      }
+    };
+
+    // Countdown logic
+    const calculateCountdown = () => {
+      const now = new Date();
+      const times = Object.entries(prayerTimes).map(([prayer, time]) => {
+        const [hour, minute] = time.split(/[: ]/);
+        const isPM = time.includes("PM");
+        return {
+          prayer,
+          time: new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            isPM && hour !== "12" ? +hour + 12 : +hour,
+            +minute
+          )
+        };
+      });
+
+      const nextPrayer = times.find(({ time }) => time > now) || times[0];
+      const diff = nextPrayer.time - now;
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").textContent = `${hours}h ${minutes}m ${seconds}s`;
+
+      // Check if it's time for the next prayer and send notification
+      if (diff <= 0) {
+        sendPrayerNotification(nextPrayer.prayer);
+      }
+
+      setTimeout(calculateCountdown, 1000);
+    };
+
+    calculateCountdown();
+  </script>
+  <script>
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      console.log('Service Worker registered with scope:', registration.scope);
+    }).catch(function(error) {
+      console.error('Service Worker registration failed:', error);
+    });
+  }
+</script>
+</body>
+</html>

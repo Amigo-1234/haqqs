@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<title>Haqslam Mosque</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="mmm.png">
+  
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="mmm.png">
+<link rel="icon" type="png" href="mmm.png">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="loader.css">
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("tree.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+#qibla-finder {
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      #prayer-times {
+        padding: 64px 16px;
+        background-color: #f8f9fa;
+      }
+
+      #prayer-times h3 {
+        font-size: 2rem;
+        color: green;
+        margin-bottom: 16px;
+      }
+
+      #prayer-times ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #prayer-times ul li {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 150px;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      #prayer-times ul li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      #prayer-times ul li span {
+        font-size: 1.5rem;
+        color:black;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      #prayer-times ul li p {
+        font-size: 1rem;
+        color: #333;
+        margin: 0;
+      }
+
+      #prayer-times .w3-button {
+        margin-top: 32px;
+        background-color:black;
+        color: white;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      #prayer-times .w3-button:hover {
+        background-color:black;
+      }
+
+</style>
+<body>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="index.html" class="w3-bar-item w3-button w3-wide">
+      <img src="image.png" alt="Haqslam Logo" style="width:40px;height:40px;">
+    </a>
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+      <a href="#services" class="w3-bar-item w3-button"><i class="fa fa-book"></i> SERVICES</a>
+      <a href="#prayer-times" class="w3-bar-item w3-button"><i class="fa fa-clock-o"></i> PRAYER TIMES</a>
+      <a href="#donate" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> DONATE</a>
+      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a href="interactive-book.html" class="w3-bar-item w3-button"><i class="fa fa-book"></i> BOOKS</a>
+      <a href="profile.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> PROFILE</a>
+      <a href="signin.html" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> SIGN IN</a>
+      <a href="signup.html" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i> SIGN UP</a>
+    </div>
+    </div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+  <a href="#prayer-times" onclick="w3_close()" class="w3-bar-item w3-button">PRAYER TIMES</a>
+  <a href="#donate" onclick="w3_close()" class="w3-bar-item w3-button">DONATE</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="interactive-book.html" onclick="w3_close()" class="w3-bar-item w3-button">BOOKS</a>
+  <a href="profile.html" onclick="w3_close()" class="w3-bar-item w3-button">PROFILE</a>
+  <a href="signin.html" onclick="w3_close()" class="w3-bar-item w3-button">SIGN IN</a>
+<a href="signup.html" onclick="w3_close()" class="w3-bar-item w3-button">SIGN UP</a>
+
+</nav>
+
+<!-- Header -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white " style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Welcome to Haqslam</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Welcome to Haqslam</span><br>
+    <span class="w3-large ">HAQIQATU-SALAM SOCIETY OF NIGERIA.</span><br>
+    <span class="w3-large">MOTTO: LAA ILAHA ILLALLAH.</span>
+    <p><a href="about.html" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn More</a></p>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container from-left" style="padding:128px 16px" id="about">
+  <h3 class="w3-center from-right">ABOUT HAQSLAM MOSQUE</h3>
+  <p class="w3-center w3-large">Serving the community with devotion and spirituality</p>
+  <p>The Haqslam Mosque is dedicated to fostering a sense of unity and faith among Muslims. We provide regular prayer services, community programs, and Islamic education for people of all ages.</p>
+<p style="text-align: center;"><a href="about.html" class="w3-button w3-black">Enter</a></p>
+</div>
+
+
+<!-- Services Section -->
+<div class="w3-container w3-light-grey from-right" style="padding:128px 16px" id="services">
+  <h3 class="w3-center">SERVICES</h3>
+  <p class="w3-center w3-large">What we offer</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-third from-left">
+      <i class="fa fa-book w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Quran Classes</p>
+      <p>Learn to recite and understand the Holy Quran with our experienced teachers.</p>
+    </div>
+    <div class="w3-third from-right">
+      <i class="fa fa-calendar w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Events</p>
+      <p>Regular Islamic lectures, youth programs, and special events for the community.</p>
+    </div>
+    <div class="w3-third">
+      <i class="fa fa-handshake-o w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Charity</p>
+      <p>Help us support those in need through Zakat and Sadaqah initiatives.</p>
+    </div>
+  </div>
+  <p class="w3-center"><a href="service.html" class="w3-button w3-black">Enter</a></p>
+</div>
+
+<!-- Prayer Times Section -->
+       <!-- Live Prayer Times Section -->
+       <div class="w3-container" id="prayer-times">
+        <h3 class="w3-center">Live Prayer Times</h3>
+        <p class="w3-center w3-large">Join us for daily prayers</p>
+        <ul>
+          <li>
+            <span>Fajr</span>
+            <p>5:30 AM</p>
+          </li>
+          <li>
+            <span>Dhuhr</span>
+            <p>12:45 PM</p>
+          </li>
+          <li>
+            <span>Asr</span>
+            <p>3:45 PM</p>
+          </li>
+          <li>
+            <span>Maghrib</span>
+            <p>Sunset</p>
+          </li>
+          <li>
+            <span>Isha</span>
+            <p>7:30 PM</p>
+          </li>
+        </ul>
+        <div class="w3-center">
+          <a href="prayer.html" class="w3-button w3-large">Enter</a>
+        </div>
+      </div>
+<!-- Donate Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="donate">
+  <h3 class="w3-center">DONATE</h3>
+  <p class="w3-center w3-large">Support your mosque</p>
+  <p>Help us continue providing services to the community. Every contribution matters.</p>
+  <p class="w3-center"><a href="donate.html" class="w3-button w3-black">Enter</a></p>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">CONTACT US</h3>
+  <p class="w3-center w3-large">Get in touch</p>
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-large w3-margin-right"></i> 41, Olaniyi off bioyin, ijaye ojokoro</p>
+    <p><i class="fa fa-phone fa-fw w3-large w3-margin-right"></i> Phone:+2347088934875</p>
+    <p><i class="fa fa-envelope fa-fw w3-large w3-margin-right"></i> Email: haqslam1@gmail.com</p>
+  </div>
+  <p class="w3-center"><a href="contact.html" class="w3-button w3-black">Enter</a></p>
+</div>
+
+
+<footer class="w3-center w3-black w3-padding-64">
+  <p>Powered by Haqslam Mosque</p>
+</footer>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+  }
+  
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+  }
+  </script>
+<script>
+  window.addEventListener('mouseover', initLandbot, { once: true });
+  window.addEventListener('touchstart', initLandbot, { once: true });
+  var myLandbot;
+  function initLandbot() {
+    if (!myLandbot) {
+      var s = document.createElement('script');
+      s.type = "module"
+      s.async = true;
+      s.addEventListener('load', function() {
+        myLandbot = new Landbot.Popup({
+          configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-2730401-JVJ3NJMRYT9QYRUX/index.json',
+        });
+      });
+      s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+  }
+  </script>
+  <script>
+    // Animate elements when the page loads
+    window.addEventListener("load", () => {
+      // Elements to animate from the left
+      const leftElements = document.querySelectorAll(".from-left");
+      leftElements.forEach((el) => {
+        el.classList.add("animate-left");
+      });
+  
+      // Elements to animate from the right
+      const rightElements = document.querySelectorAll(".from-right");
+      rightElements.forEach((el) => {
+        el.classList.add("animate-right");
+      });
+    });
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }).catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+      });
+    }
+    let deferredPrompt;
+const installButton = document.getElementById('install-btn'); // Add a button with id 'install-btn' to trigger install
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  // Prevent the default prompt from showing
+  event.preventDefault();
+  // Save the event so it can be triggered later
+  deferredPrompt = event;
+  
+  // Show your custom install button
+  installButton.style.display = 'block';
+
+  installButton.addEventListener('click', () => {
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+});
+  </script>
+  <script>
+  if ('Notification' in window && navigator.serviceWorker) {
+    Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+            console.log('Notification permission granted');
+        }
+    });
+}
+</script>
+<script>
+  // Show notification with a badge when a prayer time is near
+  function showPrayerTimeNotification() {
+      if (Notification.permission === 'granted') {
+          navigator.serviceWorker.ready.then((registration) => {
+              registration.showNotification('Prayer Time Alert!', {
+                  body: 'It is time for prayer.',
+                  icon: 'mmm.png', // Your app's icon
+                  badge: 'mmm.png', // Badge image
+                  data: { url: 'prayer-countdown.html' },
+              });
+          });
+      }
+  }
+  navigator.serviceWorker.ready.then((registration) => {
+    registration.showNotification('Prayer Time', {
+        badge: `mmm_${number}.png`, // Dynamically set the badge based on the number
+    });
+});
+
+  </script>
+
+  <script src="service-worker.js"></script>
+</body>
+</html>
+

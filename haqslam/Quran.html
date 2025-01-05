@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Quran</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to the top */
+            height: 100vh;
+            flex-direction: column;
+            padding-top: 10px; /* Add space on top */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+        }
+
+        /* Style for the back button - smaller size */
+        .back-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 6px 12px; /* Smaller padding */
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px; /* Smaller font size */
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Title for the Quran page - smaller size */
+        h1 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        /* Make iframe responsive */
+        iframe {
+            width: 100%;
+            height: calc(100vh - 70px); /* 100% of viewport height minus title and button */
+            border: none;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            iframe {
+                height: calc(100vh - 50px); /* Adjust iframe height for mobile */
+            }
+
+            .back-btn {
+                padding: 6px 10px; /* Smaller padding for mobile */
+                font-size: 12px; /* Smaller font size for mobile */
+            }
+
+            h1 {
+                font-size: 16px; /* Smaller title font size for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back Button -->
+        <a href="javascript:history.back()" class="back-btn">Back</a>
+        <h1>Read the Quran</h1>
+        <iframe src="https://quran.com/1" title="Quran Viewer"></iframe>
+    </div>
+
+</body>
+</html>
+

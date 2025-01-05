@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Reading Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 90vh;
+            background-color: white;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .navigation-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 10px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+            background-color: #333;
+            user-select: none;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #555;
+        }
+
+        .number-navigation {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .number {
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 0 5px;
+            font-size: 16px;
+            background-color: #bbb;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .number.active, .number:hover {
+            background-color: #333;
+        }
+
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .prev, .next {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .number {
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Check if user is logged in
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      
+        if (!loggedInUser) {
+          alert("Access denied. Please log in first.");
+          window.location.href = "signin.html"; // Redirect to sign-in page
+        }
+      </script>
+      
+
+<a href="interactive-book.html" class="back-button">Back</a>
+
+<div class="slideshow-container">
+    <!-- Slide 1 -->
+    <div class="slide">
+        <img src="IMAGE2/001.png" alt="Page 1">
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide">
+        <img src="IMAGE2/002.png" alt="Page 2">
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide">
+        <img src="IMAGE2/003.png" alt="Page 3">
+    </div>
+    <!-- Slide 4 -->
+    <div class="slide">
+        <img src="IMAGE2/004.png" alt="Page 4">
+    </div>
+    <!-- Slide 5 -->
+    <div class="slide">
+        <img src="IMAGE2/005.png" alt="Page 5">
+    </div>
+    <!-- Slide 6 -->
+    <div class="slide">
+        <img src="IMAGE2/006.png" alt="Page 6">
+    </div>
+    <!-- Slide 7 -->
+    <div class="slide">
+        <img src="IMAGE2/007.png" alt="Page 7">
+    </div>
+    <!-- Slide 8 -->
+    <div class="slide">
+        <img src="IMAGE2/008.png" alt="Page 8">
+    </div>
+    <!-- Slide 9 -->
+    <div class="slide">
+        <img src="IMAGE2/009.png" alt="Page 9">
+    </div>
+    <!-- Slide 10 -->
+    <div class="slide">
+        <img src="IMAGE2/010.png" alt="Page 10">
+    </div>
+    <!-- Slide 11 -->
+    <div class="slide">
+        <img src="IMAGE2/011.png" alt="Page 11">
+    </div>
+    <!-- Slide 12 -->
+    <div class="slide">
+        <img src="IMAGE2/012.png" alt="Page 12">
+    </div>
+    <!-- Slide 13 -->
+    <div class="slide">
+        <img src="IMAGE2/013.png" alt="Page 13">
+    </div>
+    <!-- Slide 14 -->
+    <div class="slide">
+        <img src="IMAGE2/014.png" alt="Page 14">
+    </div>
+    <!-- Slide 15 -->
+    <div class="slide">
+        <img src="IMAGE2/015.png" alt="Page 15">
+    </div>
+    <!-- Slide 16 -->
+    <div class="slide">
+        <img src="IMAGE2/016.png" alt="Page 16">
+    </div>
+    <!-- Slide 17 -->
+    <div class="slide">
+        <img src="IMAGE2/" alt="Page 17">
+    </div>
+    <!-- Slide 18 -->
+    <div class="slide">
+        <img src="IMAGE2/018.png" alt="Page 18">
+    </div>
+    <!-- Slide 19 -->
+    <div class="slide">
+        <img src="IMAGE2/019.png" alt="Page 19">
+    </div>
+    <!-- Slide 20 -->
+    <div class="slide">
+        <img src="IMAGE2/020.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/021.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/023.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/024.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/025.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/026.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/027.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/028.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/029.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/030.png" alt="Page 20">
+    </div>
+    <div class="slide">
+        <img src="IMAGE2/031.png" alt="Page 20">
+    </div>
+</div>
+
+<!-- Navigation below the slideshow -->
+<div class="navigation-container">
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+</div>
+
+<!-- Number navigation -->
+<div class="number-navigation">
+    <!-- Numbers for 20 slides -->
+    <script>
+        for (let i = 1; i <= 31; i++) {
+            document.write(`<span class="number" onclick="setSlide(${i})">${i}</span>`);
+        }
+    </script>
+</div>
+
+<script>
+    let slideIndex = 1;
+    showSlide(slideIndex);
+
+    function changeSlide(n) {
+        showSlide(slideIndex += n);
+    }
+
+    function setSlide(n) {
+        showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll(".slide");
+        const numbers = document.querySelectorAll(".number");
+
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        slides.forEach(slide => slide.style.display = "none");
+        numbers.forEach(number => number.className = number.className.replace(" active", ""));
+
+        slides[slideIndex - 1].style.display = "block";
+        numbers[slideIndex - 1].className += " active";
+    }
+</script>
+
+</body>
+</html>

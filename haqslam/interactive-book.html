@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .header .back-button {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .search-bar {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .search-bar input {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-bar button:hover {
+            background-color: #555;
+        }
+
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .book {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .book img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .book img:hover {
+            transform: scale(1.05);
+        }
+
+        .book-title {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    </style>
+       <script>
+        // Check if user is logged in
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      
+        if (!loggedInUser) {
+          alert("Access denied. Please log in first.");
+          window.location.href = "signin.html"; // Redirect to sign-in page
+        }
+      </script>
+      
+    <script>
+        function searchBooks() {
+            const query = document.getElementById("search-input").value.toLowerCase();
+            const books = document.querySelectorAll(".book");
+            
+            books.forEach(book => {
+                const title = book.querySelector(".book-title").textContent.toLowerCase();
+                if (title.includes(query)) {
+                    book.style.display = "block";
+                } else {
+                    book.style.display = "none";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="header">
+        <a href="prayer.html" class="back-button">&larr; Back</a>
+        <h1>Books</h1>
+    </div>
+    
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for a book...">
+        <p></p>
+        <button onclick="searchBooks()">Search</button>
+    </div>
+    <div class="catalog">
+        <div class="book">
+            <a href="azalatu.html">
+                <img src="haq.png" alt="Book 1">
+            </a>
+            <p class="book-title">Azalutu book</p>
+        </div>
+        <div class="book">
+            <a href="night.html">
+                <img src="night.png" alt="Book 2">
+            </a>
+            <p class="book-title">Night Prayer Book</p>
+        </div>
+        <div class="book">
+            <a href="2nd.html">
+                <img src="2nd.png" alt="Book 3">
+            </a>
+            <p class="book-title">Second Sunday book</p>
+        </div>
+        <div class="book">
+            <a href="last.html">
+                <img src="nig.png" alt="Book 4">
+            </a>
+            <p class="book-title">Book 4</p>
+        </div>
+        <div class="book">
+            <a href="Quran.html">
+                <img src="quran.png" alt="Quran">
+            </a>
+            <p class="book-title">Quran</p>
+        </div>
+        <div class="book">
+            <a href="mua.html">
+                <img src="01.png" alt="Book 8">
+            </a>
+            <p class="book-title">Muassasatu book</p>
+        </div>
+    </div>
+</body>
+</html>

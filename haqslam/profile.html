@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile - Haqslam</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="mmm.png">
+</head>
+<body>
+  <!-- Floating Home Button -->
+  <a href="index.html" class="home-button">
+    <i class="fa fa-home"></i> Home
+  </a>
+
+  <div class="container">
+    <h2>Welcome to Your Profile</h2>
+
+    <!-- Display user profile information -->
+    <div id="profile-info">
+      <p id="name"></p>
+      <p id="email"></p>
+    </div>
+
+    <button onclick="logout()">Log Out</button>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (!loggedInUser) {
+      alert("Access denied. Please log in first.");
+      window.location.href = "signin.html"; // Redirect to sign-in page
+    } else {
+      // Display user profile information
+      document.getElementById("name").textContent = `Name: ${loggedInUser.firstName} ${loggedInUser.lastName}`;
+      document.getElementById("email").textContent = `Email: ${loggedInUser.email}`;
+    }
+
+    // Log out function
+    function logout() {
+      localStorage.removeItem("loggedInUser"); // Remove the logged-in user from localStorage
+      window.location.href = "signin.html"; // Redirect to sign-in page
+    }
+  </script>
+</body>
+</html>
+
