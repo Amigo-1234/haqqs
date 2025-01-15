@@ -6,6 +6,8 @@
   <title>Sign In - Haqslam</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="mmm.png">
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
 </head>
 <body>
   <!-- Floating Home Button -->
@@ -27,29 +29,7 @@
     <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
   </div>
 
-  <script>
-    document.getElementById("signin-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      // Get input values
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      // Get the users data from localStorage
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-
-      // Check if user exists and password matches
-      const user = users.find(user => user.email === email && user.password === password);
-
-      if (user) {
-        alert("Login successful!");
-        localStorage.setItem("loggedInUser", JSON.stringify(user)); // Store logged-in user
-        window.location.href = "profile.html"; // Redirect to profile page
-      } else {
-        alert("Invalid email or password.");
-      }
-    });
-  </script>
+  <!-- Link to the external JS file -->
+  <script type="module" src="signin.js" defer></script> <!-- Use a separate JS file for signin -->
 </body>
 </html>
-

@@ -6,10 +6,12 @@
   <title>Sign Up - Haqslam</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="mmm.png">
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
 </head>
 <body>
-    <!-- Floating Home Button -->
-<a href="index.html" class="home-button">
+  <!-- Floating Home Button -->
+  <a href="index.html" class="home-button">
     <i class="fa fa-home"></i> Home
   </a>
   
@@ -33,41 +35,7 @@
     <p>Already have an account? <a href="signin.html">Login</a></p>
   </div>
 
-  <script>
-    document.getElementById("signup-form").addEventListener("submit", function (e) {
-      e.preventDefault(); // Prevent form from refreshing the page
-
-      // Get input values
-      const firstName = document.getElementById("firstName").value;
-      const lastName = document.getElementById("lastName").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      // Check if email already exists in localStorage
-      let users = JSON.parse(localStorage.getItem("users")) || [];
-      const existingUser = users.find(user => user.email === email);
-      
-      if (existingUser) {
-        alert("Email is already registered!");
-        return;
-      }
-
-      // Create new user object
-      const newUser = {
-        firstName,
-        lastName,
-        email,
-        password
-      };
-
-      // Save the new user in localStorage
-      users.push(newUser);
-      localStorage.setItem("users", JSON.stringify(users));
-
-      alert("Sign-up successful!");
-      window.location.href = "signin.html"; // Redirect to login page after sign up
-    });
-  </script>
+  <!-- Link to the external JS file -->
+  <script type="module" src="signup.js" defer></script> <!-- Use a separate JS file for signup -->
 </body>
 </html>
-

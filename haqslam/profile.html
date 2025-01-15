@@ -31,7 +31,7 @@
 
     if (!loggedInUser) {
       alert("Access denied. Please log in first.");
-      window.location.href = "signin.html"; // Redirect to sign-in page
+      window.location.href = "signin.html"; // Redirect to sign-in page if not logged in
     } else {
       // Display user profile information
       document.getElementById("name").textContent = `Name: ${loggedInUser.firstName} ${loggedInUser.lastName}`;
@@ -41,9 +41,8 @@
     // Log out function
     function logout() {
       localStorage.removeItem("loggedInUser"); // Remove the logged-in user from localStorage
-      window.location.href = "signin.html"; // Redirect to sign-in page
+      window.location.href = "signin.html"; // Redirect to sign-in page after logout
     }
   </script>
 </body>
 </html>
-
