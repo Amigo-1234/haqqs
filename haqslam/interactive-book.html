@@ -90,15 +90,27 @@
             font-size: 14px;
         }
     </style>
-       <script>
-        // Check if user is logged in
-        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-      
-        if (!loggedInUser) {
-          alert("Access denied. Please log in first.");
-          window.location.href = "signin.html"; // Redirect to sign-in page
-        }
-      </script>
+<script>
+    // Initialize Firebase and get the auth instance
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+  
+    // Get Firebase authentication instance
+    const auth = getAuth();
+  
+    // Check if user is logged in using Firebase Auth
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // If no user is logged in, redirect to the sign-in page
+        alert("Access denied. Please log in first.");
+        window.location.href = "signin.html"; // Redirect to sign-in page
+      } else {
+        // If a user is logged in, you can access the user information here
+        console.log("User is logged in:", user.email);
+        // You can now display user data on the profile page or perform other actions
+      }
+    });
+  </script>
+  
       
     <script>
         function searchBooks() {
