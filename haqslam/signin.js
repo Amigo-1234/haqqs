@@ -1,8 +1,7 @@
-// Import necessary functions from Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-// Your Firebase config (replace with your own)
+// Firebase config
 const firebaseConfig = {
    apiKey: "AIzaSyAIZAWQofWD3lbTZmJOBr1U6sjNtT0wh7s",
    authDomain: "login-example-b3535.firebaseapp.com",
@@ -33,12 +32,26 @@ if (submit && document.getElementById('signin-form')) {
         signInWithEmailAndPassword(auth, emailValue, passwordValue)
             .then((userCredential) => {
                 const user = userCredential.user;
-                alert("Login successful! Welcome, " + user.email);
+
+                if (!user.emailVerified) {
+                    alert("Please verify your email address before logging in.");
+                    // Optionally, you can send a new verification email if they haven't verified it
+                    sendEmailVerification(user)
+                        .then(() => {
+                            alert("A new verification email has been sent.");
+                        })
+                        .catch((error) => {
+                            console.log("Error sending verification email:", error);
+                        });
+                    return; // Stop further execution if email is not verified
+                }
+
+                alert("Login successful!");
 
                 // Save user information to localStorage
                 const userData = {
-                    firstName: "User",  // You can retrieve this from Firebase if stored separately
-                    lastName: "Name",   // You can retrieve this from Firebase if stored separately
+                    firstName: "User",  // You can retrieve this from Firebase if needed
+                    lastName: "Name",   // You can retrieve this from Firebase if needed
                     email: user.email
                 };
                 localStorage.setItem("loggedInUser", JSON.stringify(userData));
@@ -53,4 +66,3 @@ if (submit && document.getElementById('signin-form')) {
             });
     });
 }
-
