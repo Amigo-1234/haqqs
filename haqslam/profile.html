@@ -25,23 +25,40 @@
     <button onclick="logout()">Log Out</button>
   </div>
 
-  <script>
-    // Check if user is logged in
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  <script type="module">
+    // Initialize Firebase and get the auth instance
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-    if (!loggedInUser) {
-      alert("Access denied. Please log in first.");
-      window.location.href = "signin.html"; // Redirect to sign-in page if not logged in
-    } else {
-      // Display user profile information
-      document.getElementById("name").textContent = `Name: ${loggedInUser.firstName} ${loggedInUser.lastName}`;
-      document.getElementById("email").textContent = `Email: ${loggedInUser.email}`;
-    }
+    // Get Firebase authentication instance
+    const auth = getAuth();
+
+    // Check if user is logged in using Firebase Auth
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // If no user is logged in, redirect to the sign-in page
+        alert("Access denied. Please log in first.");
+        window.location.href = "signin.html"; // Redirect to sign-in page
+      } else {
+        // If a user is logged in, display the user information
+        console.log("User is logged in:", user.email);
+        
+        // Display user profile information
+        document.getElementById("name").textContent = `Name: ${user.displayName || "N/A"}`; // If name is available
+        document.getElementById("email").textContent = `Email: ${user.email}`;
+      }
+    });
 
     // Log out function
     function logout() {
-      localStorage.removeItem("loggedInUser"); // Remove the logged-in user from localStorage
-      window.location.href = "signin.html"; // Redirect to sign-in page after logout
+      const auth = getAuth();
+      auth.signOut()
+        .then(() => {
+          alert("You have been logged out.");
+          window.location.href = "signin.html"; // Redirect to sign-in page after logout
+        })
+        .catch((error) => {
+          console.error("Error logging out: ", error);
+        });
     }
   </script>
 </body>
