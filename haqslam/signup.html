@@ -14,28 +14,24 @@
   <a href="index.html" class="home-button">
     <i class="fa fa-home"></i> Home
   </a>
-  
+
   <div class="container">
     <h2>Sign Up</h2>
-    <form id="signup-form">
-      <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" required>
-
-      <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" required>
-
+    <form id="register-form">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
 
-      <button type="submit">Sign Up</button>
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>
+
+      <button type="submit" id="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a href="signin.html">Login</a></p>
   </div>
-
-  <!-- Link to the external JS file -->
-  <script type="module" src="signup.js" defer></script> <!-- Use a separate JS file for signup -->
+  
+  <script type="module" src="script.js" defer></script> <!-- Link to external JS file -->
 </body>
 </html>
