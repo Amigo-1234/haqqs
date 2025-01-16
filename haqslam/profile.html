@@ -18,8 +18,7 @@
 
     <!-- Display user profile information -->
     <div id="profile-info">
-      <p id="name"></p>
-      <p id="email"></p>
+      <p id="email"></p> <!-- Only displaying email -->
     </div>
 
     <button onclick="logout()">Log Out</button>
@@ -42,8 +41,7 @@
         // If a user is logged in, display the user information
         console.log("User is logged in:", user.email);
         
-        // Display user profile information
-        document.getElementById("name").textContent = `Name: ${user.displayName || "N/A"}`; // If name is available
+        // Display user email
         document.getElementById("email").textContent = `Email: ${user.email}`;
       }
     });
