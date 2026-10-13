@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/*
+ * HAQSLAM V2 design tokens.
+ * Palette: deep emerald/teal, warm ivory, muted gold, rich charcoal.
+ * Gold is decorative on light backgrounds; use gold-deep for text on ivory.
+ */
+@theme {
+  --color-ink: #1c2123;
+  --color-ink-soft: #384043;
+  --color-muted: #5a6360;
+  --color-ivory: #f7f2e8;
+  --color-parchment: #efe6d4;
+  --color-sand: #e2d5bb;
+  --color-emerald-950: #071d1c;
+  --color-emerald-900: #0b2c2a;
+  --color-emerald-800: #113f3b;
+  --color-emerald-700: #19564f;
+  --color-emerald-600: #236e65;
+  --color-gold: #b8954a;
+  --color-gold-light: #dcc38c;
+  --color-gold-deep: #7a5c22;
+  --color-crimson: #8e2b2b;
+
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: "Source Sans 3 Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
+
+  --ease-gentle: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --animate-page-in: page-in 0.6s var(--ease-gentle) both;
+  --animate-slow-zoom: slow-zoom 2.8s var(--ease-gentle) both;
+
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes slow-zoom {
+    from {
+      transform: scale(1.07);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  :lang(ar) {
+    font-family: var(--font-arabic);
+    line-height: 1.9;
+    letter-spacing: 0;
+    word-spacing: 0.04em;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-light);
+    color: var(--color-emerald-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 80rem;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Pointed arch, echoing the arch of the HAQSLAM emblem. Stretches with its box. */
+  .arch-mask {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V34C0 16 22 5 50 0c28 5 50 16 50 34v66z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V34C0 16 22 5 50 0c28 5 50 16 50 34v66z'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Scroll reveal. Hidden state only applies once JS has marked the document. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.9s var(--ease-gentle),
+      transform 0.9s var(--ease-gentle);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .js .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold) 20%,
+      var(--color-gold) 80%,
+      transparent
+    );
+  }
+}
+
+/* Mobile menu (native <dialog>) */
+html:has(dialog.site-menu[open]) {
+  overflow: hidden;
+}
+
+dialog.site-menu[open] {
+  animation: menu-in 0.35s var(--ease-gentle);
+}
+
+dialog.site-menu[open] .menu-item {
+  animation: menu-item-in 0.5s var(--ease-gentle) both;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

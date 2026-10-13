@@ -1,0 +1,806 @@
+{
+ "haqslam-prayer-book": {
+  "cover": {
+   "src": "/library/haqslam-prayer-book/cover.webp",
+   "width": 900,
+   "height": 1222
+  },
+  "pages": [
+   {
+    "src": "/library/haqslam-prayer-book/pages/001.webp",
+    "width": 1055,
+    "height": 1528
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/002.webp",
+    "width": 1021,
+    "height": 1440
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/003.webp",
+    "width": 1135,
+    "height": 1588
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/004.webp",
+    "width": 1229,
+    "height": 1736
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/005.webp",
+    "width": 1169,
+    "height": 1672
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/006.webp",
+    "width": 1205,
+    "height": 1724
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/007.webp",
+    "width": 1198,
+    "height": 1724
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/008.webp",
+    "width": 1298,
+    "height": 1800
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/009.webp",
+    "width": 1207,
+    "height": 1780
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/010.webp",
+    "width": 1193,
+    "height": 1664
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/011.webp",
+    "width": 1137,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/012.webp",
+    "width": 1153,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/013.webp",
+    "width": 1170,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/014.webp",
+    "width": 1324,
+    "height": 1832
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/015.webp",
+    "width": 1400,
+    "height": 1868
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/016.webp",
+    "width": 1104,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/017.webp",
+    "width": 1201,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/018.webp",
+    "width": 1074,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/019.webp",
+    "width": 1187,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/020.webp",
+    "width": 1148,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/021.webp",
+    "width": 1078,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/022.webp",
+    "width": 1050,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/023.webp",
+    "width": 1094,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/024.webp",
+    "width": 1233,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/025.webp",
+    "width": 1128,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/026.webp",
+    "width": 1092,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/027.webp",
+    "width": 1129,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/028.webp",
+    "width": 1084,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/029.webp",
+    "width": 1191,
+    "height": 1599
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/030.webp",
+    "width": 1105,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/031.webp",
+    "width": 1093,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/032.webp",
+    "width": 1086,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/033.webp",
+    "width": 1194,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/034.webp",
+    "width": 1089,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/035.webp",
+    "width": 1036,
+    "height": 1404
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/036.webp",
+    "width": 1085,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/037.webp",
+    "width": 1141,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/038.webp",
+    "width": 1144,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/039.webp",
+    "width": 1120,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/040.webp",
+    "width": 1058,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/041.webp",
+    "width": 1229,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/042.webp",
+    "width": 1097,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/043.webp",
+    "width": 1096,
+    "height": 1502
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/044.webp",
+    "width": 1089,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/045.webp",
+    "width": 1014,
+    "height": 1396
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/046.webp",
+    "width": 1028,
+    "height": 1504
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/047.webp",
+    "width": 978,
+    "height": 1378
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/048.webp",
+    "width": 979,
+    "height": 1426
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/049.webp",
+    "width": 984,
+    "height": 1408
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/050.webp",
+    "width": 972,
+    "height": 1402
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/051.webp",
+    "width": 1003,
+    "height": 1380
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/052.webp",
+    "width": 991,
+    "height": 1438
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/053.webp",
+    "width": 1117,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/054.webp",
+    "width": 1078,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/055.webp",
+    "width": 1102,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/056.webp",
+    "width": 1094,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/057.webp",
+    "width": 1126,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/058.webp",
+    "width": 1089,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/059.webp",
+    "width": 1168,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/060.webp",
+    "width": 1117,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/061.webp",
+    "width": 1081,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/062.webp",
+    "width": 1094,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/063.webp",
+    "width": 1100,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/064.webp",
+    "width": 1400,
+    "height": 1903
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/065.webp",
+    "width": 1090,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/066.webp",
+    "width": 1194,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/067.webp",
+    "width": 1108,
+    "height": 1599
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/068.webp",
+    "width": 1189,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/069.webp",
+    "width": 1151,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/070.webp",
+    "width": 1241,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/071.webp",
+    "width": 1111,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/072.webp",
+    "width": 1163,
+    "height": 1600
+   },
+   {
+    "src": "/library/haqslam-prayer-book/pages/073.webp",
+    "width": 1010,
+    "height": 1396
+   }
+  ]
+ },
+ "kitab-al-adhkar": {
+  "cover": {
+   "src": "/library/kitab-al-adhkar/cover.webp",
+   "width": 567,
+   "height": 778
+  },
+  "pages": [
+   {
+    "src": "/library/kitab-al-adhkar/pages/001.webp",
+    "width": 567,
+    "height": 778
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/002.webp",
+    "width": 618,
+    "height": 846
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/003.webp",
+    "width": 632,
+    "height": 793
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/004.webp",
+    "width": 623,
+    "height": 816
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/005.webp",
+    "width": 627,
+    "height": 810
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/006.webp",
+    "width": 611,
+    "height": 802
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/007.webp",
+    "width": 608,
+    "height": 804
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/008.webp",
+    "width": 604,
+    "height": 845
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/009.webp",
+    "width": 654,
+    "height": 893
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/010.webp",
+    "width": 645,
+    "height": 862
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/011.webp",
+    "width": 571,
+    "height": 788
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/012.webp",
+    "width": 625,
+    "height": 825
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/013.webp",
+    "width": 613,
+    "height": 833
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/014.webp",
+    "width": 600,
+    "height": 808
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/015.webp",
+    "width": 574,
+    "height": 813
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/016.webp",
+    "width": 583,
+    "height": 788
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/017.webp",
+    "width": 588,
+    "height": 830
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/018.webp",
+    "width": 610,
+    "height": 815
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/019.webp",
+    "width": 585,
+    "height": 822
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/020.webp",
+    "width": 624,
+    "height": 813
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/021.webp",
+    "width": 624,
+    "height": 807
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/022.webp",
+    "width": 606,
+    "height": 820
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/023.webp",
+    "width": 624,
+    "height": 813
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/024.webp",
+    "width": 587,
+    "height": 854
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/025.webp",
+    "width": 608,
+    "height": 823
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/026.webp",
+    "width": 603,
+    "height": 820
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/027.webp",
+    "width": 610,
+    "height": 819
+   },
+   {
+    "src": "/library/kitab-al-adhkar/pages/028.webp",
+    "width": 598,
+    "height": 794
+   }
+  ]
+ },
+ "adiya-shahriyya": {
+  "cover": {
+   "src": "/library/adiya-shahriyya/cover.webp",
+   "width": 900,
+   "height": 1290
+  },
+  "pages": [
+   {
+    "src": "/library/adiya-shahriyya/pages/001.webp",
+    "width": 1116,
+    "height": 1600
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/002.webp",
+    "width": 720,
+    "height": 901
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/003.webp",
+    "width": 720,
+    "height": 912
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/004.webp",
+    "width": 687,
+    "height": 544
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/005.webp",
+    "width": 692,
+    "height": 880
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/006.webp",
+    "width": 695,
+    "height": 518
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/007.webp",
+    "width": 720,
+    "height": 894
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/008.webp",
+    "width": 720,
+    "height": 874
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/009.webp",
+    "width": 720,
+    "height": 911
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/010.webp",
+    "width": 719,
+    "height": 888
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/011.webp",
+    "width": 720,
+    "height": 907
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/012.webp",
+    "width": 719,
+    "height": 865
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/013.webp",
+    "width": 720,
+    "height": 926
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/014.webp",
+    "width": 710,
+    "height": 917
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/015.webp",
+    "width": 720,
+    "height": 882
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/016.webp",
+    "width": 720,
+    "height": 921
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/017.webp",
+    "width": 720,
+    "height": 914
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/018.webp",
+    "width": 720,
+    "height": 942
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/019.webp",
+    "width": 720,
+    "height": 922
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/020.webp",
+    "width": 720,
+    "height": 944
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/021.webp",
+    "width": 720,
+    "height": 931
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/022.webp",
+    "width": 720,
+    "height": 924
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/023.webp",
+    "width": 720,
+    "height": 904
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/024.webp",
+    "width": 720,
+    "height": 941
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/025.webp",
+    "width": 718,
+    "height": 931
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/026.webp",
+    "width": 720,
+    "height": 889
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/027.webp",
+    "width": 720,
+    "height": 901
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/028.webp",
+    "width": 720,
+    "height": 911
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/029.webp",
+    "width": 720,
+    "height": 864
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/030.webp",
+    "width": 720,
+    "height": 905
+   },
+   {
+    "src": "/library/adiya-shahriyya/pages/031.webp",
+    "width": 720,
+    "height": 906
+   }
+  ]
+ },
+ "muassasat-prayer-book": {
+  "cover": {
+   "src": "/library/muassasat-prayer-book/cover.webp",
+   "width": 900,
+   "height": 1274
+  },
+  "pages": [
+   {
+    "src": "/library/muassasat-prayer-book/pages/001.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/002.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/003.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/004.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/005.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/006.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/007.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/008.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/009.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/010.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/011.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/012.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/013.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/014.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/015.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/016.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/017.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/018.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/019.webp",
+    "width": 1400,
+    "height": 1981
+   },
+   {
+    "src": "/library/muassasat-prayer-book/pages/020.webp",
+    "width": 1400,
+    "height": 1981
+   }
+  ]
+ },
+ "laylat-al-qadr": {
+  "cover": {
+   "src": "/library/laylat-al-qadr/cover.webp",
+   "width": 900,
+   "height": 1256
+  },
+  "pages": []
+ }
+}
