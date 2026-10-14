@@ -23,15 +23,17 @@ export const site = {
 } as const;
 
 export const contact = {
-  // From the previous website; not yet re-confirmed by the society.
+  // Contact phone confirmed by the owner on 2026-10-14; not a registration claim.
   phone: { display: "+234 708 893 4875", href: "tel:+2347088934875" },
+  whatsapp: "https://wa.me/2347088934875",
+  emailConfirmed: false,
+  // Email is still from the previous website and awaits confirmation.
   email: { display: "haqslam1@gmail.com", href: "mailto:haqslam1@gmail.com" },
   secretariat: {
     label: "National Secretariat",
-    // Both official flyers agree on the street; the house number differs
-    // between the flyers (40) and the previous website (41), so it is withheld.
-    lines: ["Olaniyi Street, off Bioyin Street", "Ike Oluwa Town, Jankara", "Ijaye-Ojokoro, Lagos State"],
-    houseNumberPending: true,
+    // House number confirmed by the owner; preserve the previously sourced street details.
+    lines: ["41 Olaniyi Street, off Bioyin Street", "Ike Oluwa Town, Jankara", "Ijaye-Ojokoro, Lagos State, Nigeria"],
+    houseNumberPending: false,
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=Olaniyi+Street+Jankara+Ijaye+Ojokoro+Lagos",
   },
@@ -43,6 +45,7 @@ export const contact = {
 } as const;
 
 export const donation = {
+  confirmed: false,
   // From the previous website's donation page.
   bank: "First City Monument Bank (FCMB)",
   accountName: "HAQIQAT-S-SALAM SOCIETY OF NIGERIA",

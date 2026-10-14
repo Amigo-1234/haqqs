@@ -30,12 +30,12 @@ export default function ContactPage() {
               <Eyebrow tone="dark">Write to us</Eyebrow>
               <h2 className="mt-4 text-2xl md:text-3xl">Send a message</h2>
               <p className="mt-3 text-ivory/75">
-                Email is the best way to reach the society with questions, requests or photographs. An online form will be
-                added in a later phase.
+                Call or send a WhatsApp message with questions, requests or photographs. The email address shown here
+                is carried over from the previous website and is awaiting confirmation.
               </p>
               <div className="mt-7">
-                <ButtonLink href={`${contact.email.href}?subject=${encodeURIComponent("Message from the HAQSLAM website")}`} icon="mail">
-                  Email the society
+                <ButtonLink href={contact.whatsapp} external icon="phone">
+                  Message on WhatsApp
                 </ButtonLink>
               </div>
             </div>

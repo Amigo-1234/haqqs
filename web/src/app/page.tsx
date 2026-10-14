@@ -229,7 +229,7 @@ export default function HomePage() {
               eyebrow="Support"
               arabic="صدقة"
               title="Support the work of HAQSLAM"
-              intro="Your support sustains the society’s gatherings, classes and publications. Contributions are received by bank transfer."
+              intro="Your support sustains the society’s gatherings, classes and publications. Donation instructions will be published once the bank details have been reconfirmed."
             />
             <div className="mt-8">
               <ButtonLink href="/donate" variant="outline-dark">

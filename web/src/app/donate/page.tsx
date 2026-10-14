@@ -6,9 +6,9 @@ import { Icon } from "@/components/ui/Icon";
 import { Eyebrow } from "@/components/ui/primitives";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { contact } from "@/content/site";
+import { contact, donation } from "@/content/site";
 
-export const metadata: Metadata = pageMetadata("/donate", "Donate", "Support Haqiqat-s-Salam Society of Nigeria by bank transfer.");
+export const metadata: Metadata = pageMetadata("/donate", "Donate", "Find out how to support HAQSLAM. Bank transfer details are temporarily withheld pending confirmation.");
 
 const steps = [
   { title: "Transfer", body: "Send your contribution to the society’s account using the details on this page." },
@@ -30,12 +30,12 @@ export default function DonatePage() {
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-7">
-            <DonationCard />
+            <DonationCard headingLevel={2} />
           </Reveal>
           <Reveal delay={120} className="lg:col-span-5">
-            <Eyebrow>How to give</Eyebrow>
+            <Eyebrow>{donation.confirmed ? "How to give" : "Before giving"}</Eyebrow>
             <ol className="mt-6 space-y-6">
-              {steps.map((s, i) => (
+              {(donation.confirmed ? steps : [{ title: "Confirm the details", body: "Contact us on WhatsApp before making a donation. Transfer instructions will be published once the account has been reconfirmed." }]).map((s, i) => (
                 <li key={s.title} className="flex gap-5">
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-parchment font-display text-lg text-gold-deep ring-1 ring-sand">
                     {i + 1}
@@ -53,7 +53,7 @@ export default function DonatePage() {
                 <Icon name="phone" className="size-4 text-gold" /> {contact.phone.display}
               </a>
               <a href={contact.email.href} className="flex items-center gap-3 text-emerald-900 hover:underline">
-                <Icon name="mail" className="size-4 text-gold" /> {contact.email.display}
+                <Icon name="mail" className="size-4 text-gold" /> {contact.email.display} (awaiting confirmation)
               </a>
             </div>
           </Reveal>

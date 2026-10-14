@@ -37,8 +37,8 @@ The separate school's app, database, auth, and hosting are outside this release.
   in the Next.js app. Retired account routes redirect home. Robots is not an
   authorization mechanism; any future staff/admin route must authenticate on the
   server and authorize every data operation before returning private data.
-- Prayer metadata describes an example timetable until PRAYER_TIMES_ARE_DEMO is
-  changed with a confirmed official schedule. Full founder biography is pending.
+- Prayer metadata describes daily calculated Lagos start times; no Iqamah or
+  Jumu‘ah timetable is asserted. Full founder biography is pending.
 
 ## Google Search Console
 
@@ -49,7 +49,12 @@ Next's metadata verification field in the server HTML head. It is not a secret.
 GOOGLE_SITE_VERIFICATION optionally supplies an additional owner token without
 removing the first. Keep the token after verification; Google rechecks it.
 
-Pending final ownership verification: in Search Console choose the HAQSLAM
+Completed on 2026-10-14: ownership verification succeeded, sitemap processed with
+17 discovered pages. URL inspections found eight priority pages not indexed,
+unknown to Google. Manual indexing was rejected by the daily quota; the homepage
+live smartphone test confirmed crawling, fetch and indexing eligibility.
+
+For future verification: in Search Console choose the HAQSLAM
 URL-prefix property, HTML tag method, then Verify after the release is live.
 After successful verification, open Sitemaps and submit sitemap.xml. Inspect the
 homepage, /founder and /events/maolid-2026 to see Google's current indexing status.
@@ -68,12 +73,11 @@ identify a matching mosque listing. Maps returned unrelated institutions.
 This is **not proof of absence**: a listing may use a different name or pin.
 No profile was created or claimed. Do not create a duplicate.
 
-Official flyers show 40 Olaniyi Street; the older website shows 41. The street
-area is verified; the building number, entrance pin and precise coordinates
-remain unconfirmed. No number or coordinates are published in metadata/schema.
+Official flyers show 40 Olaniyi Street; the older website shows 41. The owner resolved the street number to 41 on 2026-10-14. The entrance pin and precise mosque coordinates remain unconfirmed. The confirmed address is
+published consistently in visible content and schema; no mosque coordinates
+are published.
 /contact and the homepage clearly label the existing Maps link as the street
-area and advise confirming directions. src/content/location.ts is intentionally
-null. After the society confirms its exact building and real Maps link, fill
+area and advise confirming directions. src/content/location.ts contains the confirmed address; mapsUrl remains null. After the society confirms its entrance pin and real Maps link, fill
 VerifiedLocation with street address, locality, region, country, mapsUrl and
 confirmation provenance. ContactDetails and Mosque JSON-LD then use that source.
 An iframe is deferred until the correct pin/listing is confirmed.
@@ -85,11 +89,11 @@ An iframe is deferred until the correct pin/listing is confirmed.
 | Public name | Confirm exactly what the mosque's physical sign says; HAQSLAM Mosque is the website label |
 | Society name | Haqiqat-s-Salam Society of Nigeria (HAQSLAM), verified official flyers/books |
 | Category | Select Mosque if offered; choose the actual activity, no SEO keywords |
-| Address | Owner must resolve 40 vs 41 Olaniyi Street, off Bioyin Street, Ike Oluwa Town, Jankara, Ijaye-Ojokoro, Lagos |
+| Address | Owner confirmed 41 Olaniyi Street on 2026-10-14, off Bioyin Street, Ike Oluwa Town, Jankara, Ijaye-Ojokoro, Lagos |
 | Pin | Confirm entrance/location on site; no guessed latitude/longitude |
 | Website | https://haqqs.vercel.app/ |
-| Contact | Reconfirm +234 708 893 4875 and haqslam1@gmail.com before listing (legacy website only) |
-| Hours | Confirm visitor/opening hours; demo prayer times are not opening hours |
+| Contact | Phone +234 708 893 4875 confirmed by owner; email haqslam1@gmail.com still needs confirmation |
+| Hours | Confirm visitor/opening hours; calculated prayer times are not opening hours |
 | Photos | Real exterior, sign, entrance, interior and approved organization photos |
 | Description draft | HAQSLAM is an Islamic society in Ijaye-Ojokoro, Lagos, devoted to worship, remembrance and learning. Its activities include devotional gatherings, Arabic studies, publications and the Annual Maolid Nabiyy celebration. |
 | Authorized manager | A society-approved Google account; never share passwords or verification codes |
@@ -120,3 +124,25 @@ does not guarantee Google's Event rich results (some venues lack exact address).
 Use validator.schema.org and Google's Rich Results Test for independent review.
 Test production route responses, reader controls, gallery viewer, contact link
 and mobile navigation. Keep validation claims specific to observed evidence.
+
+## Daily prayer calculations
+
+The production app uses adhan 4.4.6 locally, without an external daily fetch.
+Configuration: src/content/prayer.ts. Muslim World League (Fajr 18°, Isha 17°),
+standard Asr (Maliki/Shafi/Hanbali), library MWL Dhuhr +1 minute, and nearest
+minute rounding. Custom offsets initially zero. Labels and method descriptions
+follow the configuration. Uses the sourced GeoNames Lagos city reference
+6.454066 N / 3.394673 E (2332453); this is not the mosque's pin.
+
+Calendar selection and display use Africa/Lagos regardless of the browser zone.
+After Isha, the countdown uses tomorrow's newly calculated Fajr, not today's
+time repeated. It refreshes at Lagos midnight; device resume updates the clock.
+No demonstration slots, fake Jumu‘ah time, or official Iqamah claims are shown.
+The accuracy of the countdown assumes a correct device clock.
+
+References:
+- https://github.com/batoulapps/adhan-js/blob/develop/METHODS.md
+- https://www.geonames.org/advanced-search.html?country=NG&q=
+
+Donation details remain paused until reconfirmed. The contact phone and
+WhatsApp are owner-confirmed; email remains visibly awaiting confirmation.

@@ -37,6 +37,7 @@ export function BookReader({ title, pages }: { title: string; pages: Page[] }) {
     function onKey(e: KeyboardEvent) {
       const target = e.target as HTMLElement | null;
       if (target && ["INPUT", "SELECT", "TEXTAREA"].includes(target.tagName)) return;
+      if (e.key === "Escape" && fullscreen && !document.fullscreenElement) setFullscreen(false);
       if (e.key === "ArrowRight") go(1);
       if (e.key === "ArrowLeft") go(-1);
     }
@@ -49,20 +50,30 @@ export function BookReader({ title, pages }: { title: string; pages: Page[] }) {
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("fullscreenchange", onFullscreen);
     };
-  }, [go]);
+  }, [go, fullscreen]);
 
-  function toggleFullscreen() {
+  async function toggleFullscreen() {
     const el = containerRef.current;
     if (!el) return;
-    if (document.fullscreenElement) document.exitFullscreen();
-    else el.requestFullscreen?.().catch(() => undefined);
+    if (fullscreen) {
+      if (document.fullscreenElement) await document.exitFullscreen().catch(() => undefined);
+      setFullscreen(false);
+      return;
+    }
+    try {
+      if (el.requestFullscreen) await el.requestFullscreen();
+      setFullscreen(true);
+    } catch {
+      // A browser without permitted native full-screen still gets a usable reader.
+      setFullscreen(true);
+    }
   }
 
   const navButton =
     "size-12 items-center justify-center rounded-full bg-ivory text-emerald-900 shadow-md ring-1 ring-sand transition-all hover:bg-white disabled:pointer-events-none disabled:opacity-30";
 
   return (
-    <div ref={containerRef} className={`bg-parchment ${fullscreen ? "flex h-full flex-col overflow-auto" : ""}`}>
+    <div ref={containerRef} data-fullscreen={fullscreen} className={`book-reader bg-parchment ${fullscreen ? "fixed inset-0 z-50 flex h-dvh w-full flex-col overflow-auto" : ""}`}>
       {/* Toolbar */}
       <div className={`z-30 border-b border-sand bg-ivory/95 backdrop-blur ${fullscreen ? "sticky top-0" : "sticky top-[4.5rem] md:top-20"}`}>
         <div className="container-page flex h-14 items-center gap-3">
@@ -96,7 +107,7 @@ export function BookReader({ title, pages }: { title: string; pages: Page[] }) {
           <button
             type="button"
             onClick={toggleFullscreen}
-            className="inline-flex size-9 items-center justify-center rounded-full text-emerald-800 ring-1 ring-sand hover:bg-parchment"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full text-emerald-800 ring-1 ring-sand hover:bg-parchment"
           >
             <Icon name="expand" className="size-4" />
             <span className="sr-only">{fullscreen ? "Exit full screen" : "Full screen"}</span>

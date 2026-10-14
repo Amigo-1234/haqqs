@@ -1,31 +1,19 @@
 "use client";
 
+import { useMemo } from "react";
 import { useNow } from "@/lib/clock";
-import {
-  formatCountdown,
-  formatGregorian,
-  formatHijri,
-  getCurrentPrayer,
-  getNextPrayer,
-  isFriday,
-  to12h,
-} from "@/lib/prayer";
-import { demoJumuah, demoPrayerTimes, PRAYER_TIMES_ARE_DEMO } from "@/content/prayer";
-
-function DemoBadge() {
-  if (!PRAYER_TIMES_ARE_DEMO) return null;
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-crimson/8 px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-crimson ring-1 ring-crimson/20">
-      <span aria-hidden="true" className="size-1.5 rounded-full bg-crimson" />
-      Demonstration times
-    </span>
-  );
-}
+import { calculatePrayerTimes, lagosDateKey, nextDateKey, formatCountdown, formatGregorian, formatHijri, getNextPrayer, to12h } from "@/lib/prayer";
+import { prayerCalculationConfig, calculationMethodNames, prayerLabels } from "@/content/prayer";
 
 export function PrayerPanel({ variant = "compact" }: { variant?: "compact" | "full" }) {
   const now = useNow();
-  const next = now === null ? null : getNextPrayer(demoPrayerTimes, now);
-  const current = now === null ? null : getCurrentPrayer(demoPrayerTimes, now);
+  const dateKey = now === null ? null : lagosDateKey(now);
+  const calculated = useMemo(() => {
+    if (!dateKey) return null;
+    try { return { today: calculatePrayerTimes(dateKey), tomorrow: calculatePrayerTimes(nextDateKey(dateKey)) }; }
+    catch { return null; }
+  }, [dateKey]);
+  const next = now === null || !calculated ? null : getNextPrayer(calculated.today, calculated.tomorrow, now);
   const countdown = next ? formatCountdown(next.msUntil) : null;
   const hijri = now === null ? null : formatHijri(now);
   const full = variant === "full";
@@ -39,9 +27,9 @@ export function PrayerPanel({ variant = "compact" }: { variant?: "compact" | "fu
         <div>
           <div className="flex flex-wrap items-center gap-3">
             <h2 id="prayer-heading" className="font-display text-2xl text-emerald-900 md:text-[1.75rem]">
-              Prayer times today
+              Calculated prayer times
             </h2>
-            <DemoBadge />
+            <span className="rounded-full bg-emerald-900/5 px-3 py-1 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-900/15">Lagos · Africa/Lagos</span>
           </div>
           <p className="mt-2 min-h-[1.6em] text-[0.95rem] text-muted">
             {now === null ? (
@@ -63,7 +51,7 @@ export function PrayerPanel({ variant = "compact" }: { variant?: "compact" | "fu
         </div>
 
         <div className="md:text-right" aria-live="polite">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-deep">Next prayer</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-deep">Next calculated prayer</p>
           {next && countdown ? (
             <>
               <p className="mt-1 font-display text-3xl text-emerald-900">
@@ -78,7 +66,7 @@ export function PrayerPanel({ variant = "compact" }: { variant?: "compact" | "fu
               </p>
             </>
           ) : (
-            <p className="mt-2 h-16 w-48 animate-pulse rounded-lg bg-sand/60 md:ml-auto" />
+            <p className="mt-2 text-sm text-muted">{now === null ? "Calculating times…" : "Times unavailable. Please follow the mosque’s announcements."}</p>
           )}
         </div>
       </div>
@@ -86,9 +74,8 @@ export function PrayerPanel({ variant = "compact" }: { variant?: "compact" | "fu
       <div className="rule-gold my-6 opacity-50" />
 
       <ol className={`grid grid-cols-2 gap-2.5 sm:grid-cols-3 ${full ? "lg:grid-cols-6" : "md:grid-cols-6"}`}>
-        {demoPrayerTimes.map((slot) => {
-          const isNext = next?.slot.key === slot.key;
-          const isCurrent = current?.key === slot.key;
+        {(calculated?.today ?? prayerLabels.map(label => ({ ...label, time: "", at: 0 }))).map((slot) => {
+          const isNext = !next?.isTomorrow && next?.slot.key === slot.key;
           return (
             <li
               key={slot.key}
@@ -105,37 +92,20 @@ export function PrayerPanel({ variant = "compact" }: { variant?: "compact" | "fu
                 {slot.arabic}
               </p>
               <p className="mt-2 text-sm font-semibold uppercase tracking-[0.12em]">{slot.name}</p>
-              <p className={`font-display text-2xl tabular-nums ${full ? "md:text-3xl" : ""}`}>{to12h(slot.time)}</p>
+              <p className={`font-display text-2xl tabular-nums ${full ? "md:text-3xl" : ""}`}>{slot.time ? to12h(slot.time) : "—"}</p>
               {isNext && <span className="sr-only">(next prayer)</span>}
-              {isCurrent && !isNext && (
-                <p className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-emerald-700">Current</p>
-              )}
             </li>
           );
         })}
       </ol>
 
-      {full && (
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-emerald-900/5 px-5 py-4 ring-1 ring-emerald-900/10">
-          <p className="flex items-center gap-3">
-            <span lang="ar" dir="rtl" className="text-xl text-gold-deep">
-              {demoJumuah.arabic}
-            </span>
-            <span className="font-semibold text-emerald-900">{demoJumuah.name} prayer</span>
-            {now !== null && isFriday(now) && (
-              <span className="rounded-full bg-gold-light/50 px-2.5 py-0.5 text-xs font-semibold text-emerald-950">Today</span>
-            )}
-          </p>
-          <p className="font-display text-2xl tabular-nums text-emerald-900">{to12h(demoJumuah.time)}</p>
-        </div>
-      )}
-
-      {PRAYER_TIMES_ARE_DEMO && (
-        <p className="mt-5 text-sm text-muted">
-          These are sample times for design review only and are not the mosque’s official timetable. Official times will be
-          published once confirmed by the mosque leadership.
-        </p>
-      )}
+      <p className="mt-5 text-sm text-muted">
+        Calculated for Lagos city using {calculationMethodNames[prayerCalculationConfig.method]};
+        {" "}{prayerCalculationConfig.asr === "hanafi" ? "Hanafi" : "standard (Maliki, Shafi‘i and Hanbali)"} Asr.
+        Times update each day in Africa/Lagos. These are prayer start times, not HAQSLAM’s official Iqamah timetable.
+        Please follow the mosque’s announcements for congregational and Jumu‘ah times.
+      </p>
+      <noscript><p className="mt-3 text-sm text-muted">Enable JavaScript to display daily calculated times and the countdown.</p></noscript>
     </section>
   );
 }

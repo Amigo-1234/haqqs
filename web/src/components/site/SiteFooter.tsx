@@ -55,9 +55,10 @@ export function SiteFooter() {
                 <Icon name="phone" className="size-4 text-gold-light" />
                 {contact.phone.display}
               </a>
+              <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 py-1 hover:text-ivory"><Icon name="phone" className="size-4 text-gold-light" /> WhatsApp<span className="sr-only"> (opens in a new tab)</span></a>
               <a href={contact.email.href} className="flex items-center gap-3 hover:text-ivory">
                 <Icon name="mail" className="size-4 text-gold-light" />
-                {contact.email.display}
+                {contact.email.display} <span className="text-xs">(awaiting confirmation)</span>
               </a>
             </address>
           </div>

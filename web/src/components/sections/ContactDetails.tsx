@@ -14,16 +14,16 @@ export function ContactDetails() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-deep">{contact.secretariat.label}</p>
             <address className="mt-2 font-display text-xl not-italic leading-snug text-emerald-900 md:text-2xl">
-              {(verifiedLocation ? [verifiedLocation.streetAddress, `${verifiedLocation.addressLocality}, ${verifiedLocation.addressRegion}`] : contact.secretariat.lines).map((l) => (
+              {contact.secretariat.lines.map((l) => (
                 <span key={l} className="block">
                   {l}
                 </span>
               ))}
             </address>
-            {!verifiedLocation && <p className="mt-3 max-w-lg text-sm text-muted">The street area is shown below. Please contact the society to confirm the building and directions before visiting.</p>}
+            {!verifiedLocation.mapsUrl && <p className="mt-3 max-w-lg text-sm text-muted">The address is confirmed. This map opens the street area; contact us for the entrance and directions.</p>}
             <div className="mt-5">
               <ButtonLink href={verifiedLocation?.mapsUrl ?? contact.secretariat.mapUrl} external variant="outline-dark">
-                {verifiedLocation ? "Directions to HAQSLAM Mosque" : "View street area in Google Maps"}
+                {verifiedLocation.mapsUrl ? "Directions to HAQSLAM Mosque" : "View street area in Google Maps"}
               </ButtonLink>
             </div>
           </div>
@@ -38,12 +38,17 @@ export function ContactDetails() {
         <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gold-deep">Call</p>
         <p className="mt-1 font-display text-xl text-emerald-900 group-hover:text-emerald-700">{contact.phone.display}</p>
       </a>
+      <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="group rounded-2xl bg-ivory p-6 ring-1 ring-sand transition-shadow hover:shadow-lg">
+        <Icon name="phone" className="size-5 text-gold" />
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gold-deep">WhatsApp</p>
+        <p className="mt-1 font-display text-xl text-emerald-900 group-hover:text-emerald-700">Message on WhatsApp<span className="sr-only"> (opens in a new tab)</span></p>
+      </a>
       <a
         href={contact.email.href}
         className="group rounded-2xl bg-ivory p-6 ring-1 ring-sand transition-shadow hover:shadow-lg"
       >
         <Icon name="mail" className="size-5 text-gold" />
-        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gold-deep">Email</p>
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gold-deep">Email · awaiting confirmation</p>
         <p className="mt-1 break-all font-display text-xl text-emerald-900 group-hover:text-emerald-700">
           {contact.email.display}
         </p>

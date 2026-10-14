@@ -15,6 +15,7 @@ npm install
 npm run dev      # http://localhost:3000
 npm run lint
 npm run typecheck
+npm test         # Lagos dates, prayer order and countdown rollover
 npm run build && npm start
 ```
 
@@ -22,7 +23,7 @@ npm run build && npm start
 
 | Path | What it holds |
 | --- | --- |
-| `src/content/` | All site content, with its sources noted (organisation facts, founder, programme, events, library, gallery, demo prayer times) |
+| `src/content/` | All site content, with its sources noted (organisation facts, founder, programme, events, library, gallery, calculated Lagos prayer times) |
 | `src/components/` | Design system (`ui/`), brand (`brand/Emblem.tsx`), page sections, library reader, gallery |
 | `src/app/` | Routes: `/`, `/about`, `/founder`, `/prayer-times`, `/activities`, `/library`, `/library/[slug]`, `/events`, `/events/[slug]`, `/gallery`, `/donate`, `/contact`, `/markaz` |
 | `public/library/` | Web copies (WebP) of the original book scans. Originals remain in `../haqslam/IMAGE*` |
@@ -33,13 +34,13 @@ npm run build && npm start
 ## Common changes
 
 - **Replace the logo:** put the vector file in `public/brand/` and update `EMBLEM_SRC` and its dimensions in `src/components/brand/Emblem.tsx`. The header, footer, icons and About page all use it.
-- **Publish real prayer times:** replace the times in `src/content/prayer.ts` and set `PRAYER_TIMES_ARE_DEMO = false`. The demonstration badges disappear automatically.
+- **Adjust prayer calculations:** configure the method, Asr convention and minute offsets in `src/content/prayer.ts`. Times are calculated daily with Adhan in Africa/Lagos; an official Iqamah timetable needs separately confirmed information.
 - **Link to Markazul Ginaa:** set `partners.markaz.url` in `src/content/site.ts`.
 - **Add photographs:** add images to `public/photos/` and list them in `src/content/gallery.ts` (with caption, date and alt text).
 
 ## Legacy site migration
 
-- `next.config.ts` redirects every old `*.html` URL to its V2 page (307 for now; switch to permanent at launch).
+- `next.config.ts` redirects every old `*.html` URL to its V2 page (permanent 308 redirects).
 - The old site registered a cache-first service worker at `/service-worker.js`. `public/service-worker.js` replaces it with a version that clears caches, unregisters itself and reloads open tabs. Keep this file in place after launch.
 
 ## Deploying

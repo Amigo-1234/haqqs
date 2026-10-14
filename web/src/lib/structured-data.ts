@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { site, contact } from "@/content/site";
 import { founder } from "@/content/founder";
 import { verifiedLocation } from "@/content/location";
 import type { AnnualEvent } from "@/content/events";
@@ -12,14 +12,14 @@ const ref = (id: string) => ({ "@id": id });
 export function organizationGraph() {
   return { "@context": "https://schema.org", "@graph": [
     { "@type": "Organization", "@id": entityIds.organization,
-      name: site.name, alternateName: site.shortName, url: absoluteUrl("/"), description: site.description,
+      name: site.name, alternateName: site.shortName, telephone: contact.phone.display, url: absoluteUrl("/"), description: site.description,
       logo: absoluteUrl("/brand/haqslam-emblem-2023-reference.png"), founder: ref(entityIds.founder), location: ref(entityIds.mosque) },
     { "@type": "Mosque", "@id": entityIds.mosque, name: "HAQSLAM Mosque", url: absoluteUrl("/contact"),
       address: { "@type": "PostalAddress", ...(verifiedLocation ? {
         streetAddress: verifiedLocation.streetAddress, addressLocality: verifiedLocation.addressLocality,
         addressRegion: verifiedLocation.addressRegion, addressCountry: verifiedLocation.addressCountry,
       } : { addressLocality: "Ijaye-Ojokoro", addressRegion: "Lagos", addressCountry: "NG" }) },
-      ...(verifiedLocation ? { hasMap: verifiedLocation.mapsUrl } : {}) },
+      ...(verifiedLocation?.mapsUrl ? { hasMap: verifiedLocation.mapsUrl } : {}) },
     { "@type": "Person", "@id": entityIds.founder, name: founder.displayName,
       alternateName: founder.formalName, url: absoluteUrl("/founder"), image: absoluteUrl(founder.portrait.src) },
     { "@type": "WebSite", "@id": entityIds.website, name: site.shortName,
@@ -47,7 +47,7 @@ export function eventGraph(event: AnnualEvent) {
     url, description: event.summary, startDate: day.startDate ?? day.date,
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     organizer: ref(entityIds.organization),
-    // Historical venue printed on the flyer; never substitute the disputed mosque address.
+    // Historical venue printed on the flyer; do not replace an event venue with the current mosque address.
     location: { "@type": "Place", ...(day.venue.startsWith("HAQSLAM National Secretariat") ? { "@id": entityIds.mosque } : {}), name: day.venue },
     image: [absoluteUrl(event.poster.src), ...(event.photos?.slice(0, 1).map(photo => absoluteUrl(photo.src)) ?? [])],
   })) };
