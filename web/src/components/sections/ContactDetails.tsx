@@ -1,3 +1,4 @@
+import { verifiedLocation } from "@/content/location";
 import { Icon } from "@/components/ui/Icon";
 import { ButtonLink } from "@/components/ui/primitives";
 import { contact } from "@/content/site";
@@ -13,15 +14,16 @@ export function ContactDetails() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-deep">{contact.secretariat.label}</p>
             <address className="mt-2 font-display text-xl not-italic leading-snug text-emerald-900 md:text-2xl">
-              {contact.secretariat.lines.map((l) => (
+              {(verifiedLocation ? [verifiedLocation.streetAddress, `${verifiedLocation.addressLocality}, ${verifiedLocation.addressRegion}`] : contact.secretariat.lines).map((l) => (
                 <span key={l} className="block">
                   {l}
                 </span>
               ))}
             </address>
+            {!verifiedLocation && <p className="mt-3 max-w-lg text-sm text-muted">The street area is shown below. Please contact the society to confirm the building and directions before visiting.</p>}
             <div className="mt-5">
-              <ButtonLink href={contact.secretariat.mapUrl} external variant="outline-dark">
-                Open in Google Maps
+              <ButtonLink href={verifiedLocation?.mapsUrl ?? contact.secretariat.mapUrl} external variant="outline-dark">
+                {verifiedLocation ? "Directions to HAQSLAM Mosque" : "View street area in Google Maps"}
               </ButtonLink>
             </div>
           </div>

@@ -1,3 +1,7 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { eventGraph } from "@/lib/structured-data";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,13 +20,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/events/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const event = getEvent(slug);
-  if (!event) return { title: "Event not found" };
+  if (!event) notFound();
   const cover = event.photos?.[0] ?? event.poster;
-  return {
-    title: event.title,
-    description: event.summary,
-    openGraph: { title: event.title, description: event.summary, images: [{ url: cover.src }] },
-  };
+  return pageMetadata(`/events/${event.slug}`, event.title, event.summary, cover);
 }
 
 export default function EventPage({ params }: PageProps<"/events/[slug]">) {
@@ -48,13 +48,15 @@ async function EventContent({ params }: { params: PageProps<"/events/[slug]">["p
 
   return (
     <>
+      <PageSeo path={`/events/${event.slug}`} name={event.title} parent={{ path: "/events", name: "Events" }} />
+      <JsonLd data={eventGraph(event)} />
       {/* Photographic introduction */}
       <section className="relative isolate overflow-hidden bg-emerald-950 text-ivory">
         {hero ? (
           <>
             <Image
               src={hero.src}
-              alt=""
+              alt={hero.alt}
               fill
               priority
               sizes="100vw"

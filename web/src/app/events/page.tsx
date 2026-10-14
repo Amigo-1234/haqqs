@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,15 +8,13 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { annualEvents, formatEventDate } from "@/content/events";
 
-export const metadata: Metadata = {
-  title: "Events",
-  description: "HAQSLAM events and their photo collections, including the Annual Maolid Nabiyy celebration.",
-};
+export const metadata: Metadata = pageMetadata("/events", "Events", "HAQSLAM events and their photo collections, including the Annual Maolid Nabiyy celebration.");
 
 export default function EventsPage() {
   const events = [...annualEvents].sort((a, b) => b.date.localeCompare(a.date));
   return (
     <>
+      <PageSeo path="/events" name={"Events"} />
       <PageHeader
         eyebrow="Events"
         arabic="المناسبات"

@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,10 +10,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { founder } from "@/content/founder";
 import { contact, partners, site } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "About HAQSLAM",
-  description: "Who we are: Haqiqat-s-Salam Society of Nigeria, its motto, locations, work and partner institutions.",
-};
+export const metadata: Metadata = pageMetadata("/about", "About HAQSLAM", "Who we are: Haqiqat-s-Salam Society of Nigeria, its motto, locations, work and partner institutions.");
 
 const work = [
   {
@@ -39,6 +38,7 @@ const work = [
 export default function AboutPage() {
   return (
     <>
+      <PageSeo path="/about" name={"About HAQSLAM"} />
       <PageHeader
         eyebrow="About HAQSLAM"
         arabic={site.arabicName}

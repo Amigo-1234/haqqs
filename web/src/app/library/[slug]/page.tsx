@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -13,11 +15,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/library/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const book = getBook(slug);
-  if (!book) return { title: "Book not found" };
-  return {
-    title: book.title,
-    description: `${book.title}${book.subtitle ? `: ${book.subtitle}` : ""}. ${book.publisher}.`,
-  };
+  if (!book) notFound();
+  return pageMetadata(`/library/${book.slug}`, book.title, `${book.title}: ${book.subtitle}. ${book.publisher}. ${book.available ? "Read the original scanned pages online." : "Only the cover is available; the full scan is coming soon."}`, { ...book.cover, alt: `Cover of ${book.title}` }, book.available);
 }
 
 export default function BookPage({ params }: PageProps<"/library/[slug]">) {
@@ -35,6 +34,7 @@ async function Book({ params }: { params: PageProps<"/library/[slug]">["params"]
 
   return (
     <>
+      <PageSeo path={`/library/${book.slug}`} name={book.title} parent={{ path: "/library", name: "Islamic Library" }} />
       <section className="border-b border-sand bg-ivory">
         <div className="container-page flex flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between md:py-14">
           <div>

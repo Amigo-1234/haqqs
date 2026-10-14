@@ -20,6 +20,7 @@ export type EventProgramme = {
   title: string;
   date: string; // ISO date, Lagos local
   time: string;
+  startDate?: string; // Verified ISO date/time with Lagos offset; omit when unknown.
   venue: string;
   people?: { role: string; name: string; note?: string }[];
   topics?: { speaker: string; titles: string[] }[];
@@ -66,6 +67,7 @@ export const annualEvents: AnnualEvent[] = [
         day: "Day 2",
         title: "Annual Maolid Nabiyy Celebration",
         date: "2026-10-11",
+        startDate: "2026-10-11T10:00:00+01:00",
         time: "10:00 AM prompt",
         venue: "Best Glorious Event Center, Orilawe Street, Ifako-Ijaiye, Ojokoro, Lagos",
         people: [
@@ -97,6 +99,7 @@ export const annualEvents: AnnualEvent[] = [
         day: "Day 1",
         title: "Symposium",
         date: "2023-11-25",
+        startDate: "2023-11-25T10:00:00+01:00",
         time: "10:00 AM prompt",
         venue: "HAQSLAM National Secretariat, Ijaye-Ojokoro, Lagos",
         topics: [
@@ -112,6 +115,7 @@ export const annualEvents: AnnualEvent[] = [
         day: "Day 2",
         title: "Annual Maolid Nabiyy Celebration",
         date: "2023-11-26",
+        startDate: "2023-11-26T10:00:00+01:00",
         time: "10:00 AM prompt",
         venue: "HAQSLAM National Secretariat, Ijaye-Ojokoro, Lagos",
       },

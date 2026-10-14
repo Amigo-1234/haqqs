@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import Image from "next/image";
 import Link from "next/link";
 import { MaolidShowcase } from "@/components/events/MaolidShowcase";
@@ -18,6 +20,8 @@ import { founder } from "@/content/founder";
 import { books } from "@/content/library";
 import { site } from "@/content/site";
 
+export const metadata = pageMetadata("/", "HAQSLAM Mosque Lagos | Haqiqat-s-Salam Society of Nigeria", site.description);
+
 const facts = [
   { label: "National Secretariat", value: "Ijaye-Ojokoro, Lagos" },
   { label: "Branch", value: "Adiyan, Ogun State" },
@@ -32,6 +36,7 @@ export default function HomePage() {
 
   return (
     <>
+      <PageSeo path="/" name={site.name} />
       <Hero />
 
       {/* Prayer times, overlapping the hero */}

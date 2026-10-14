@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { MaolidFeature } from "@/components/sections/MaolidFeature";
 import { WeeklyProgramme } from "@/components/sections/WeeklyProgramme";
@@ -6,15 +8,13 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { annualEvents, formatEventDate } from "@/content/events";
 
-export const metadata: Metadata = {
-  title: "Activities & Events",
-  description: "The HAQSLAM weekly programme, the Annual Maolid Nabiyy celebration and past symposiums.",
-};
+export const metadata: Metadata = pageMetadata("/activities", "Activities & Events", "The HAQSLAM weekly programme, the Annual Maolid Nabiyy celebration and past symposiums.");
 
 export default function ActivitiesPage() {
   const [current, ...past] = annualEvents;
   return (
     <>
+      <PageSeo path="/activities" name={"Activities & Events"} />
       <PageHeader
         eyebrow="Activities & events"
         title="Gatherings through the week and the year"

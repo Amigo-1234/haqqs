@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { DonationCard } from "@/components/sections/DonationCard";
 import { Icon } from "@/components/ui/Icon";
@@ -6,10 +8,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { contact } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Donate",
-  description: "Support Haqiqat-s-Salam Society of Nigeria by bank transfer.",
-};
+export const metadata: Metadata = pageMetadata("/donate", "Donate", "Support Haqiqat-s-Salam Society of Nigeria by bank transfer.");
 
 const steps = [
   { title: "Transfer", body: "Send your contribution to the society’s account using the details on this page." },
@@ -20,6 +19,7 @@ const steps = [
 export default function DonatePage() {
   return (
     <>
+      <PageSeo path="/donate" name={"Donate"} />
       <PageHeader
         eyebrow="Support"
         arabic="صدقة"

@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { MarkazFeature } from "@/components/sections/MarkazFeature";
 import { Eyebrow } from "@/components/ui/primitives";
@@ -5,15 +7,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { annualEvents } from "@/content/events";
 import { partners } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Markazul Ginaa",
-  description: `${partners.markaz.fullName}: the educational institution led by the founder of HAQSLAM.`,
-};
+export const metadata: Metadata = pageMetadata("/markaz", "Markaz il Ginna (Markazul Ginaa)", `${partners.markaz.fullName}: the educational institution led by the founder of HAQSLAM.`);
 
 export default function MarkazPage() {
   const coHosted = annualEvents.filter((e) => e.partners.some((p) => p.startsWith("Markazu")));
   return (
     <>
+      <PageSeo path="/markaz" name={"Markazul Ginaa"} />
       <MarkazFeature headingLevel={1} />
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 md:grid-cols-2">
@@ -22,7 +22,7 @@ export default function MarkazPage() {
             <h2 className="mt-4 text-3xl text-emerald-900 md:text-4xl">How HAQSLAM and Markazul Ginaa relate</h2>
             <div className="mt-6 space-y-4 text-lg text-ink-soft">
               <p>
-                HAQSLAM is the society for worship, remembrance and community. Markazul Ginaa is the educational
+                HAQSLAM is the society for worship, remembrance and community. Markazul Ginaa (Markaz il Ginna) is the educational
                 institution, led by the founder of HAQSLAM as its Mudeer.
               </p>
               <p>

@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { BookCard } from "@/components/library/BookCard";
 import { GirihPattern } from "@/components/ui/GirihPattern";
@@ -6,10 +8,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { books, externalResources, type BookCategory } from "@/content/library";
 
-export const metadata: Metadata = {
-  title: "Islamic Library",
-  description: "Prayer books and collections of remembrance published by HAQSLAM and its partners, readable page by page.",
-};
+export const metadata: Metadata = pageMetadata("/library", "Islamic Library", "Prayer books and collections of remembrance published by HAQSLAM and its partners, readable page by page.");
 
 const categories: { name: BookCategory; blurb: string }[] = [
   { name: "Prayer & Devotion", blurb: "Prayer books used in the society’s gatherings." },
@@ -21,6 +20,7 @@ export default function LibraryPage() {
   const [quran] = externalResources;
   return (
     <>
+      <PageSeo path="/library" name={"Islamic Library"} />
       <PageHeader
         eyebrow="Islamic library"
         arabic="المكتبة"

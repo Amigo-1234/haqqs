@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 /**
  * Old static-site URLs, mapped to their V2 equivalents so bookmarks and shared
- * links keep working. Temporary (307) until V2 is approved for production.
+ * links keep working. V2 is live: consolidate old public URLs with 308 redirects.
  */
 const legacyRedirects: [string, string][] = [
   ["/index.html", "/"],
@@ -37,8 +37,11 @@ const nextConfig: NextConfig = {
     },
   },
   poweredByHeader: false,
+  // Catalogue lookups are local: resolve metadata before streaming so missing
+  // entries return 404 and every crawler receives metadata in the HTML head.
+  htmlLimitedBots: /.*/,
   async redirects() {
-    return legacyRedirects.map(([source, destination]) => ({ source, destination, permanent: false }));
+    return legacyRedirects.map(([source, destination]) => ({ source, destination, permanent: true }));
   },
   async headers() {
     return [

@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { Gallery } from "@/components/gallery/Gallery";
 import { ButtonLink, Eyebrow, PhotoPlaceholder } from "@/components/ui/primitives";
@@ -5,10 +7,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { collections } from "@/content/gallery";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description: "Photographs and official programmes from HAQSLAM gatherings and events.",
-};
+export const metadata: Metadata = pageMetadata("/gallery", "Gallery", "Photographs and official programmes from HAQSLAM gatherings and events.");
 
 export default function GalleryPage() {
   const filled = collections.filter((c) => c.images.length > 0);
@@ -16,6 +15,7 @@ export default function GalleryPage() {
 
   return (
     <>
+      <PageSeo path="/gallery" name={"Gallery"} />
       <PageHeader
         eyebrow="Gallery"
         title="Moments from our gatherings"

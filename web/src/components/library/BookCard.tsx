@@ -13,7 +13,7 @@ export function BookCard({ book, priority = false }: { book: Book; priority?: bo
         <div style={{ width: `${widthPct}%` }} className="relative transition-transform duration-500 ease-[var(--ease-gentle)] group-hover:-translate-y-2 group-hover:[transform:rotateY(-8deg)]">
           <Image
             src={cover.src}
-            alt=""
+            alt={`Cover of ${book.title}`}
             width={cover.width}
             height={cover.height}
             priority={priority}

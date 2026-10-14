@@ -14,7 +14,7 @@ cd web
 npm install
 npm run dev      # http://localhost:3000
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm run build && npm start
 ```
 
@@ -24,7 +24,7 @@ npm run build && npm start
 | --- | --- |
 | `src/content/` | All site content, with its sources noted (organisation facts, founder, programme, events, library, gallery, demo prayer times) |
 | `src/components/` | Design system (`ui/`), brand (`brand/Emblem.tsx`), page sections, library reader, gallery |
-| `src/app/` | Routes: `/`, `/about`, `/founder`, `/prayer-times`, `/activities`, `/library`, `/library/[slug]`, `/gallery`, `/donate`, `/contact`, `/markaz` |
+| `src/app/` | Routes: `/`, `/about`, `/founder`, `/prayer-times`, `/activities`, `/library`, `/library/[slug]`, `/events`, `/events/[slug]`, `/gallery`, `/donate`, `/contact`, `/markaz` |
 | `public/library/` | Web copies (WebP) of the original book scans. Originals remain in `../haqslam/IMAGE*` |
 | `public/photos/`, `public/brand/` | Supplied photographs, flyers and reference logos |
 | `scripts/prepare_assets.py` | Regenerates the WebP copies and `src/content/library-pages.json` |
@@ -44,4 +44,8 @@ npm run build && npm start
 
 ## Deploying
 
-Not deployed yet. Recommended: a **new** Vercel project (or a preview of the existing one) with **Root Directory set to `web`**, so the current production deployment is unaffected until V2 is approved.
+Existing Vercel project: **haqqs** (`prj_nnofJOxvf9GAaJSQA1omMA9MYrgh`).
+Build **web/** with Next.js. Production origin: https://haqqs.vercel.app.
+Do not deploy the legacy static folder. Markaz il Ginna is a separate project.
+See `docs/SEO-OPERATIONS.md` for sitemap publication, Maps, and Search Console.
+See `docs/CHATBOT-ARCHITECTURE.md` for the future chatbot plan.

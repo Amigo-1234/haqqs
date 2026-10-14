@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,15 +12,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { founder } from "@/content/founder";
 import { bookCover } from "@/content/library";
 
-export const metadata: Metadata = {
-  title: `Our Founder: ${founder.displayName}`,
-  description: `${founder.displayName}, ${founder.title}: founder of Haqiqat-s-Salam Society of Nigeria and Mudeer of Markazul Ginaa.`,
-};
+export const metadata: Metadata = pageMetadata("/founder", `Our Founder: ${founder.displayName}`, `${founder.displayName}: verified roles as HAQSLAM founder, author and Mudeer of Markazul Ginaa. A full biography is in preparation.`);
 
 export default function FounderPage() {
   const cover = bookCover("kitab-al-adhkar");
   return (
     <>
+      <PageSeo path="/founder" name={`Our Founder: ${founder.displayName}`} />
       <section className="relative isolate overflow-hidden bg-emerald-950 text-ivory">
         <GirihPattern className="text-gold opacity-[0.07]" />
         <div className="container-page relative grid items-end gap-12 pb-20 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-16 lg:pb-24">

@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { ContactDetails } from "@/components/sections/ContactDetails";
 import { ButtonLink, Eyebrow } from "@/components/ui/primitives";
@@ -5,14 +7,12 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { contact } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Visit or contact Haqiqat-s-Salam Society of Nigeria in Ijaye-Ojokoro, Lagos.",
-};
+export const metadata: Metadata = pageMetadata("/contact", "Contact", "Visit or contact Haqiqat-s-Salam Society of Nigeria in Ijaye-Ojokoro, Lagos.");
 
 export default function ContactPage() {
   return (
     <>
+      <PageSeo path="/contact" name={"Contact"} />
       <PageHeader
         eyebrow="Visit & contact"
         arabic="أهلا وسهلا"

@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
 import type { Metadata } from "next";
 import { PrayerPanel } from "@/components/prayer/PrayerPanel";
 import { WeeklyProgramme } from "@/components/sections/WeeklyProgramme";
@@ -5,14 +7,12 @@ import { Eyebrow } from "@/components/ui/primitives";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 
-export const metadata: Metadata = {
-  title: "Prayer Times",
-  description: "Daily prayer times and the next prayer at HAQSLAM, Ijaye-Ojokoro, Lagos.",
-};
+export const metadata: Metadata = pageMetadata("/prayer-times", "Prayer Times", "HAQSLAM prayer timetable information and weekly gatherings in Ijaye-Ojokoro, Lagos. Displayed prayer times are examples pending an official timetable.");
 
 export default function PrayerTimesPage() {
   return (
     <>
+      <PageSeo path="/prayer-times" name={"Prayer Times"} />
       <PageHeader
         eyebrow="Prayer times"
         arabic="مواقيت الصلاة"
