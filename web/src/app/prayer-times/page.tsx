@@ -34,7 +34,7 @@ export default function PrayerTimesPage() {
             <div className="mt-6 space-y-4 text-ink-soft">
               <p>
                 Prayer times change through the year. This page calculates them each day using the {calculationMethodNames[prayerCalculationConfig.method]}
-                method: Fajr at {calculation.fajrAngle}° and Isha at {calculation.ishaAngle}° below the horizon, with {prayerCalculationConfig.asr} Asr. The calculation method and
+                {" "}method: Fajr at {calculation.fajrAngle}° and Isha at {calculation.ishaAngle}° below the horizon, with {prayerCalculationConfig.asr} Asr. The calculation method and
                 time adjustments can be changed when the mosque leadership supplies its preferences.
               </p>
               <p>
