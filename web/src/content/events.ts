@@ -1,4 +1,19 @@
-/** Annual events, transcribed from the society's official flyers. */
+/**
+ * Annual events, transcribed from the society's official flyers.
+ *
+ * To publish photographs for an event, prepare a manifest (see
+ * scripts/prepare_maolid_2026.py) and attach it as `photos`. The event then
+ * gets its own gallery at /events/<slug> with no other frontend changes.
+ */
+import maolid2026Photos from "./events/maolid-2026-photos.json";
+
+export type EventPhoto = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+};
 
 export type EventProgramme = {
   day: string;
@@ -17,6 +32,12 @@ export type AnnualEvent = {
   poster: { src: string; width: number; height: number; alt: string };
   partners: string[];
   programme: EventProgramme[];
+  /** ISO date of the main day; used to order events and mark them completed. */
+  date: string;
+  status: "upcoming" | "completed";
+  summary: string;
+  photos?: EventPhoto[];
+  photoCredit?: string;
 };
 
 export const annualEvents: AnnualEvent[] = [
@@ -24,6 +45,12 @@ export const annualEvents: AnnualEvent[] = [
     slug: "maolid-2026",
     year: 2026,
     title: "Annual Maolid Nabiyy Celebration 2026",
+    date: "2026-10-11",
+    status: "completed",
+    summary:
+      "The society’s annual celebration of the Prophet’s birth, held on Sunday, October 11, 2026 at Best Glorious Event Center, Ifako-Ijaiye, Ojokoro, Lagos.",
+    photos: maolid2026Photos,
+    photoCredit: "MC Larios TV",
     poster: {
       src: "/photos/events/maolid-2026-flyer.webp",
       width: 1032,
@@ -54,6 +81,10 @@ export const annualEvents: AnnualEvent[] = [
     slug: "maolid-2023",
     year: 2023,
     title: "Symposium & Annual Maolid Nabiyy 2023",
+    date: "2023-11-26",
+    status: "completed",
+    summary:
+      "Two days at the National Secretariat: a symposium of lectures on Saturday, November 25, 2023, followed by the Annual Maolid Nabiyy celebration.",
     poster: {
       src: "/photos/events/maolid-2023-flyer.webp",
       width: 1080,
@@ -97,4 +128,15 @@ export function formatEventDate(iso: string): string {
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(`${iso}T12:00:00Z`));
+}
+
+export function getEvent(slug: string) {
+  return annualEvents.find((e) => e.slug === slug) ?? null;
+}
+
+/** The most recent completed event that has photographs. */
+export function latestEventWithPhotos() {
+  return [...annualEvents]
+    .filter((e) => e.status === "completed" && e.photos?.length)
+    .sort((a, b) => b.date.localeCompare(a.date))[0];
 }

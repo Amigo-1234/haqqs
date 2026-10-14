@@ -7,12 +7,14 @@ import type { GalleryImage } from "@/content/gallery";
 
 /**
  * Responsive image grid with a full-screen viewer. Uses the native <dialog>,
- * which provides focus containment and Escape-to-close.
+ * which provides focus containment and Escape-to-close. In the viewer, arrow
+ * keys and left/right swipes move between images.
  */
 export function Gallery({ images, title }: { images: GalleryImage[]; title: string }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [active, setActive] = useState<number | null>(null);
   const current = active === null ? null : images[active];
+  const swipeStart = useRef<number | null>(null);
 
   function open(i: number) {
     setActive(i);
@@ -90,9 +92,28 @@ export function Gallery({ images, title }: { images: GalleryImage[]; title: stri
                 <span className="sr-only">Close viewer</span>
               </button>
             </div>
-            <figure className="relative flex min-h-0 flex-1 flex-col items-center justify-center px-4 pb-6 sm:px-16">
+            <figure
+              className="relative flex min-h-0 flex-1 touch-pan-y select-none flex-col items-center justify-center px-4 pb-6 sm:px-16"
+              onPointerDown={(e) => {
+                swipeStart.current = e.clientX;
+              }}
+              onPointerUp={(e) => {
+                if (swipeStart.current === null || images.length < 2) return;
+                const dx = e.clientX - swipeStart.current;
+                swipeStart.current = null;
+                if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+              }}
+            >
               <div className="relative h-full w-full">
-                <Image key={current.src} src={current.src} alt={current.alt} fill sizes="100vw" className="animate-page-in object-contain" />
+                <Image
+                  key={current.src}
+                  src={current.src}
+                  alt={current.alt}
+                  fill
+                  sizes="100vw"
+                  draggable={false}
+                  className="animate-page-in object-contain"
+                />
               </div>
               <figcaption className="mt-4 text-center">
                 <p className="font-display text-lg">{current.caption}</p>

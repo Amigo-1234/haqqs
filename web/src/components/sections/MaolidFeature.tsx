@@ -11,7 +11,7 @@ export function MaolidFeature({ event = annualEvents[0], detailed = false }: { e
       <GirihPattern className="text-gold opacity-[0.08]" />
       <div className="relative grid gap-0 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <Link
-          href={`/gallery#${event.slug}`}
+          href={`/events/${event.slug}`}
           className="group relative block aspect-square overflow-hidden bg-emerald-950 md:aspect-auto md:min-h-full"
         >
           <Image
@@ -26,7 +26,10 @@ export function MaolidFeature({ event = annualEvents[0], detailed = false }: { e
           </span>
         </Link>
         <div className="p-6 sm:p-8 md:p-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">Annual Maolid Nabiyy · {event.year}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
+            Annual Maolid Nabiyy · {event.year}
+            {event.status === "completed" && <span className="text-ivory/60"> · Held</span>}
+          </p>
           <h3 className="mt-3 text-3xl text-ivory md:text-4xl">{event.title}</h3>
           <dl className="mt-6 space-y-3 text-[0.98rem]">
             <div className="flex gap-3">
@@ -54,6 +57,15 @@ export function MaolidFeature({ event = annualEvents[0], detailed = false }: { e
             </ul>
           )}
           <p className="mt-5 text-sm text-ivory/60">In conjunction with {event.partners.join(" and ")}.</p>
+          {event.photos?.length ? (
+            <Link
+              href={`/events/${event.slug}`}
+              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-light px-5 text-sm font-semibold text-emerald-950 transition-colors hover:bg-[#e7d3a6]"
+            >
+              View {event.photos.length} photographs
+              <Icon name="arrowRight" className="size-4" />
+            </Link>
+          ) : null}
         </div>
       </div>
     </article>

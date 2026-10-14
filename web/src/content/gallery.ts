@@ -21,6 +21,9 @@ export type GalleryCollection = {
   description: string;
   date?: string;
   images: GalleryImage[];
+  /** A dedicated event gallery holding the full collection, when there is one. */
+  href?: string;
+  total?: number;
 };
 
 const [maolid2026, maolid2023] = annualEvents;
@@ -29,9 +32,14 @@ export const collections: GalleryCollection[] = [
   {
     slug: "maolid-2026",
     title: "Annual Maolid Nabiyy 2026",
-    description: "The annual celebration of the Prophet’s birth, Ojokoro, Lagos.",
+    description: "Moments from our celebration, Sunday, October 11, 2026, Ojokoro, Lagos.",
     date: "October 2026",
-    images: [{ ...maolid2026.poster, caption: "Official programme flyer", date: "11 October 2026" }],
+    images: [
+      ...(maolid2026.photos ?? []).slice(0, 5).map((p) => ({ ...p, date: "11 October 2026" })),
+      { ...maolid2026.poster, caption: "Official programme flyer", date: "11 October 2026" },
+    ],
+    href: `/events/${maolid2026.slug}`,
+    total: (maolid2026.photos?.length ?? 0) + 1,
   },
   {
     slug: "maolid-2023",

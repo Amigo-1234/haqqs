@@ -13,6 +13,7 @@ export const primaryNav: NavItem[] = [
 /** Everything, for the mobile menu and footer. */
 export const fullNav: NavItem[] = [
   ...primaryNav,
+  { href: "/events", label: "Events" },
   { href: "/gallery", label: "Gallery" },
   { href: "/donate", label: "Donate" },
   { href: "/contact", label: "Contact" },

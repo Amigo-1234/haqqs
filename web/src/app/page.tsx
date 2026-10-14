@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MaolidShowcase } from "@/components/events/MaolidShowcase";
 import { Hero } from "@/components/home/Hero";
 import { BookCard } from "@/components/library/BookCard";
 import { PrayerPanel } from "@/components/prayer/PrayerPanel";
@@ -12,7 +13,7 @@ import { WeeklyProgramme } from "@/components/sections/WeeklyProgramme";
 import { Icon } from "@/components/ui/Icon";
 import { ButtonLink, PhotoPlaceholder, Salawat, SectionHeading } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
-import { annualEvents } from "@/content/events";
+import { annualEvents, latestEventWithPhotos } from "@/content/events";
 import { founder } from "@/content/founder";
 import { books } from "@/content/library";
 import { site } from "@/content/site";
@@ -27,6 +28,7 @@ const facts = [
 export default function HomePage() {
   const shelf = books.filter((b) => b.available);
   const [latestEvent] = annualEvents;
+  const showcaseEvent = latestEventWithPhotos();
 
   return (
     <>
@@ -43,6 +45,12 @@ export default function HomePage() {
           </ButtonLink>
         </p>
       </div>
+
+      {showcaseEvent && (
+        <div className="mt-20 md:mt-28">
+          <MaolidShowcase event={showcaseEvent} />
+        </div>
+      )}
 
       {/* About */}
       <section aria-labelledby="about-heading" className="py-20 md:py-28">
@@ -108,6 +116,7 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={120} className="lg:col-span-6">
               <h3 className="mb-5 text-2xl text-emerald-900">The Annual Maolid Nabiyy</h3>
+              <p className="-mt-3 mb-5 text-sm text-muted">Most recently celebrated on Sunday, October 11, 2026.</p>
               <MaolidFeature event={latestEvent} />
               <p className="mt-5">
                 <ButtonLink href="/activities" variant="text">

@@ -52,8 +52,15 @@ export default function GalleryPage() {
               </h2>
               <p className="mt-3 text-ink-soft">{c.description}</p>
               <p className="mt-2 text-sm text-muted">
-                {c.images.length} {c.images.length === 1 ? "image" : "images"}
+                {c.href ? `${c.total} images` : `${c.images.length} ${c.images.length === 1 ? "image" : "images"}`}
               </p>
+              {c.href && (
+                <div className="mt-6">
+                  <ButtonLink href={c.href} variant="emerald">
+                    View all photos
+                  </ButtonLink>
+                </div>
+              )}
             </Reveal>
             <Reveal delay={100} className="lg:col-span-8">
               <Gallery images={c.images} title={c.title} />
